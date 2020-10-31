@@ -21,7 +21,7 @@ body {
     align-content: center;    
 }
 
-.join-create-container button, input {
+.join-create-container button, .join-create-container input {
     margin: auto;
     margin-bottom: 0.5em;
     padding: 1em;
@@ -50,51 +50,13 @@ body {
     background: grey;
 }
 
-/* Chat box */
 
-.chat-box {
-    margin: 0.8em;
-}
-
-.chat-box-messages {
-    border: thin black solid;
-    padding: 1em;
-    margin-bottom: 1em;
-}
-
-.message {
-    font-style: italic;
-}
-
-.chat-input-container {
-    border: thin black solid;
-    padding: 0.5em;
-    display: grid;
-    grid-template-columns: 80fr 20fr;
-}
-
-.chat-text-input {
-    border: thin black solid;
-    margin-right: 0.5em;
-    height: 20px;
-}
-
-.chat-send-button {
-    border: thin black solid;
-    background: white;
-    height: 20px;
-    color: black;
-}
-
-.chat-send-button:hover {
-    background: lightgrey;
-}
-
-.chat-send-button:active {
-    background: grey;
-}
 
 /* Player boxes */
+
+.active-player {
+    background: lightgreen;
+}
 
 .player-box {
     border: black solid thin;
@@ -106,9 +68,11 @@ body {
 }
 
 .player-name {
+    font-family: 'Bungee Shade', cursive;
     text-align: center;
     font-weight: bold;
     font-size: 1.5em;
+    margin-top: 2em;
 }
 
 /* Grid element titles */
@@ -130,9 +94,9 @@ body {
 
 /* Main subgrid */
 
-.main-grid-element > * {
+/* .main-grid-element > * {
     border: 1px dashed green;
-}
+} */
 
 .subgrid-main {
     grid-column: 1 / 4;
@@ -169,9 +133,9 @@ body {
     grid-auto-rows: 15vh 65vh 20vh;
 }
 
-.grid-container > * {
+/* .grid-container > * {
     border: 1px dashed red;
-}
+} */
 
 .title-grid-element {
     grid-column: 1 / 4;
@@ -204,4 +168,50 @@ body {
 
     padding: 0.8em;
     display: flex;
+}
+
+/* Chat box */
+
+.chat-box {
+    margin: 0.8em;
+}
+
+.chat-box-messages {
+    border: thin black solid;
+    padding: 1em;
+    margin-bottom: 1em;
+}
+
+.message {
+    font-style: italic;
+}
+
+.chat-input-container {
+    border: thin black solid;
+    padding: 0.5em;
+    display: grid;
+    grid-template-columns: 80fr 20fr;
+}
+
+.chat-text-input {
+    border: thin black solid;
+    margin-right: 0.5em;
+    font-size: auto !important;
+    padding: auto !important;
+}
+
+.chat-send-button {
+    border: thin black solid;
+    background: white;
+    color: black;
+    font-size: auto !important;
+    padding: auto !important;
+}
+
+.chat-send-button:hover {
+    background: lightgrey;
+}
+
+.chat-send-button:active {
+    background: grey;
 }

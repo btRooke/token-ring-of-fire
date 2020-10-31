@@ -114,7 +114,7 @@ function getUsers(roomID) {
 function onChat(socket) {
     socket.on("usrMsg", (userObject) => {
         const {userName, message, gameID} = userObject;
-        socket.to(gameID).emit("usrMsg", {userName, message});
+        socket.to(gameID).emit("usrMsg", {userName, message, gameID});
     });
 }
 

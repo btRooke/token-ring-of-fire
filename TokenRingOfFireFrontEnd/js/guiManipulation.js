@@ -11,13 +11,25 @@ function popMessage() {
 
 }
 
+function refreshPlayerRow() {
+
+    let players = document.getElementById("players-box");
+    players.innerHTML = "";
+
+    for (let player of room.users) {
+        addPlayer(player);
+    }
+
+}
+
 function sendMessage() {
 
     let msg = popMessage();
 
     if (msg != "") {
         console.log({username: username, message: msg, gameID: room.roomID});
-        socket.emit("usrMsg", {username: username, message: msg, gameID: room.roomID})
+        socket.emit("usrMsg", {userName: username, message: msg, gameID: room.roomID})
+        addMessage(`${username}: ${msg}`);
     }
 }
 
@@ -126,7 +138,7 @@ function showMainPage() {
         <div id="message-box" class="chat-box-messages"></div>
         <div class="chat-input-container"> <!-- Is a form s.t. button will be activated on enter press. -->
             <input id="message-input" type="text" class="chat-text-input">
-            <button class="chat-send-button"> Send </button>
+            <button class="chat-send-button" onclick="sendMessage()"> Send </button>
         </div>
     </div>
 </div>

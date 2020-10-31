@@ -7,6 +7,7 @@ var username = null;
 socket.on("userConnect", (response) => {
     room = response;
     console.log(room);
+    refreshPlayerRow();    
 });
 
 socket.on("roomCreated", (roomResponse) => {
@@ -19,9 +20,9 @@ socket.on("roomCreated", (roomResponse) => {
 
 socket.on("usrMsg", (response) => {
     console.log(response);
-    const {username, message} = response;
-    console.log(`${username}: ${message}`);
-    addMessage(`${username}: ${message}`);
+    const {userName, message, gameID} = response;
+    console.log(`${userName}: ${message}`);
+    addMessage(`${userName}: ${message}`);
 });
 
 socket.on("joinedRoom", (roomResponse) => {
@@ -31,7 +32,7 @@ socket.on("joinedRoom", (roomResponse) => {
     showMainPage();
     setAlertBox(roomResponse.roomID);
     addOption("Start Game", () => pickCard());
-    addOption("End Turn", () => );
+    //addOption("End Turn", () => );
 });
 
 socket.on("gameStarted", (randomUser) => {
