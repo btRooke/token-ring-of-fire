@@ -16,9 +16,10 @@ socket.on("roomCreated", (roomResponse) => {
 });
 
 socket.on("usrMsg", (response) => {
-    const {userName, message} = response;
-    console.log(`${userName}: ${message}`);
-    addMessage(`${userName}: ${msg}`);
+    console.log(response);
+    const {username, message} = response;
+    console.log(`${username}: ${message}`);
+    addMessage(`${username}: ${message}`);
 });
 
 socket.on("joinedRoom", (roomResponse) => {

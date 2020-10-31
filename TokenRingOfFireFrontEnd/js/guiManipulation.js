@@ -16,7 +16,8 @@ function sendMessage() {
     let msg = popMessage();
 
     if (msg != "") {
-        socket.emit("usrMsg", {username, message: msg, gameID: room.roomID})
+        console.log({username: username, message: msg, gameID: room.roomID});
+        socket.emit("usrMsg", {username: username, message: msg, gameID: room.roomID})
     }
 
 }
@@ -32,6 +33,19 @@ function addOption(message, onclick) {
     button.innerHTML = message;
 
     optionsBox.appendChild(button);
+
+}
+
+function toggleDisable(message) {
+
+    let option = document.getElementById(message);
+
+    if (option.hasAttribute("disabled")) {
+        option.removeAttribute("disabled");
+    }
+    else {
+        option.setAttribute("disabled", "false");
+    }
 
 }
 
