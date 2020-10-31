@@ -65,11 +65,11 @@ function joinRoom(socket) {
             }
 
             socket.join(roomID);
-            socket.emit("joinedRoom", {roomID, users: getUsers(roomID)});
+            socket.emit("joinedRoom", {roomID, users: room.users});
             room.addUser(new User(username, roomID));  
             
             
-            io.to(roomID).emit("userConnect", {roomID, users: getUsers(roomID)});
+            io.to(roomID).emit("userConnect", {roomID, users: room.users});
         } else {
             socket.emit("failedJoin");
         }

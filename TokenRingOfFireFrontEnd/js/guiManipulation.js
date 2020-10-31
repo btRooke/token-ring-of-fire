@@ -26,7 +26,7 @@ function sendMessage() {
 
     let msg = popMessage();
 
-    if (msg != "") {
+    if (msg !== "") {
         console.log({username: username, message: msg, gameID: room.roomID});
         socket.emit("usrMsg", {userName: username, message: msg, gameID: room.roomID})
         addMessage(`${username}: ${msg}`);

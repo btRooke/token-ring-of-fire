@@ -7,6 +7,7 @@ var username = null;
 socket.on("userConnect", (response) => {
     room = response;
     console.log(room);
+    refreshPlayerRow();
 });
 
 socket.on("roomCreated", (roomResponse) => {
@@ -19,9 +20,9 @@ socket.on("roomCreated", (roomResponse) => {
 
 socket.on("usrMsg", (response) => {
     console.log(response);
-    const {username, message} = response;
-    console.log(`${username}: ${message}`);
-    addMessage(`${username}: ${message}`);
+    const {userName, message, gameID} = response;
+    console.log(`${userName}: ${message}`);
+    addMessage(`${userName}: ${message}`);
 });
 
 socket.on("joinedRoom", (roomResponse) => {
@@ -30,15 +31,16 @@ socket.on("joinedRoom", (roomResponse) => {
     console.log("Joined the Game");
     showMainPage();
     setAlertBox(roomResponse.roomID);
-    addOption("Start Game", () => pickCard());;
+    addOption("Start Game", `startGame()`);
 });
 
 socket.on("gameStarted", (randomUser) => {
-    addOption("Pick Card", () => pickCard());
+    addOption("Pick Card", `pickCard()`);
 });
 
 socket.on("userPickedCard", ({username, card}) => {
-    showCard(card);
+    showCard(card.url);
+    setAlertBox(`${card.name}: ${card.meaning}`);
 });
 
 socket.on("failedJoin", () => console.log("Room does not exist!"));
@@ -65,9 +67,6 @@ function pickCard() {
     socket.emit("userPickCard", {username, gameID: room.roomID});
 }
 
-function endTurn() {
-    socket.emit("endTurn", {gameID: room.roomID, user :username});
-}
 
 
 
