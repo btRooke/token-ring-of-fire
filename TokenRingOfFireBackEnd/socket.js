@@ -88,7 +88,7 @@ function startGame(socket) {
             
             let randomUser = Math.floor(Math.random() * users.length);
 
-            room.userTurn = randomUser;
+            room.userTurn = users[randomUser];
 
             io.to(gameID).emit("gameStarted", randomUser);
         }
@@ -121,14 +121,21 @@ function onChat(socket) {
 
 function pickCard(socket) {
     socket.on("userPickCard", ({username, gameID}) => {
-        let cards = rooms.get(gameID).cards;
+        if (rooms.has(gameID)) {
+            let room = rooms.get(gameID);
 
-        let index = Math.floor(Math.random() * cards.length);
+            if (username === room.userTurn) {
 
-        io.sockets.to(gameID).emit("userPickedCard", {username, card: cards[index]});
+                let cards = rooms.get(gameID).cards;
 
-        // Remove the card from the cards list.
-        rooms.get(gameID).cards.splice(index, 0);
+                let index = Math.floor(Math.random() * cards.length);
+
+                io.sockets.to(gameID).emit("userPickedCard", {username, card: cards[index]});
+
+                // Remove the card from the cards list.
+                rooms.get(gameID).cards.splice(index, 0);
+            }
+        }
 
     });
 }
