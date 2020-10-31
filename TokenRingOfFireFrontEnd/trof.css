@@ -9,6 +9,26 @@ body {
     font-family: 'Roboto', sans-serif;
 }
 
+/* Join start page */
+
+.join-create-container {
+    grid-column: 1 / 4;
+    grid-row: 2 / 4;
+
+    display: grid;
+    align-content: center;    
+}
+
+.join-create-container button, input {
+    margin: auto;
+    margin-bottom: 0.5em;
+    padding: 1em;
+    font-size: 2em;
+}
+
+
+/* Options box */
+
 .options-button {
     display: block;
     text-align: center;
