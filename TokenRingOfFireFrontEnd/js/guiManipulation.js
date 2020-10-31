@@ -1,6 +1,40 @@
 
 const cardPath = "/cards";
 
+function popMessage() {
+
+    let messageInput = document.getElementById("message-input");
+    let value = messageInput.value;
+    messageInput.value = ""
+
+    return value;
+
+}
+
+function sendMessage() {
+
+    let msg = popMessage();
+
+    if (msg != "") {
+        socket.emit("usrMsg", {username, message: msg, gameID: room.roomID})
+    }
+
+}
+
+function addOption(message, onclick) {
+
+    let optionsBox = document.getElementById("options-box");
+
+    let button = document.createElement("button");
+    button.setAttribute("id", message);
+    button.setAttribute("class", "options-button");
+    button.setAttribute("onclick", onclick)
+    button.innerHTML = message;
+
+    optionsBox.appendChild(button);
+
+}
+
 function showCard(card) {
 
     let mainElement = document.getElementById("main");
@@ -18,10 +52,6 @@ function addMessage(message) {
     messageElement.setAttribute("class", "message");
     messageElement.innerHTML = message;
     messageBox.appendChild(messageElement);
-}
-
-function addButton(message, onclick) {
-    let buttonBox = document.getElementById("options-box");
 }
 
 function addPlayer(name) {
@@ -79,10 +109,10 @@ function showMainPage() {
      <div class="grid-element-title"> Chat </div>
      <div class="chat-box"> 
         <div id="message-box" class="chat-box-messages"></div>
-        <form class="chat-input-container"> <!-- Is a form s.t. button will be activated on enter press. -->
-            <input type="text" class="chat-text-input">
+        <div class="chat-input-container"> <!-- Is a form s.t. button will be activated on enter press. -->
+            <input id="message-input" type="text" class="chat-text-input">
             <button class="chat-send-button"> Send </button>
-        </form>
+        </div>
     </div>
 </div>
 

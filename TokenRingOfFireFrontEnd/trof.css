@@ -75,14 +75,14 @@ body {
 
 .chat-text-input {
     border: thin black solid;
-    padding: 0.3em;
     margin-right: 0.5em;
+    height: 20px;
 }
 
 .chat-send-button {
     border: thin black solid;
-    padding: 0.3em;
     background: white;
+    height: 20px;
     color: black;
 }
 
@@ -146,6 +146,14 @@ body {
 .subgrid-messagebox {
     grid-row: 3;
     grid-column: 1 / 4;
+}
+
+.alert-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    color: darkred;
 }
 
 

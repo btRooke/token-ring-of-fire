@@ -18,6 +18,7 @@ socket.on("roomCreated", (roomResponse) => {
 socket.on("usrMsg", (response) => {
     const {userName, message} = response;
     console.log(`${userName}: ${message}`);
+    addMessage(`${userName}: ${msg}`);
 });
 
 socket.on("joinedRoom", (roomResponse) => {
@@ -39,12 +40,6 @@ function createRoom() {
     socket.emit("createRoom", username);
 }
 
-function sendMessage() {
-    let msg = document.getElementById("message").value;
-    document.getElementById("message").value = "";
-
-    socket.emit("usrMsg", {username, message: msg, gameID: room.roomID})
-}
 
 function setUsername(value) {
     username = value;
