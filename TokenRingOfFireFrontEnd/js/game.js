@@ -13,6 +13,8 @@ socket.on("roomCreated", (roomResponse) => {
     console.log(roomResponse.roomID);
     room = roomResponse;
     showMainPage();
+    setAlertBox(roomResponse.roomID);
+    addOption("Start Game",);
 });
 
 socket.on("usrMsg", (response) => {
@@ -27,6 +29,11 @@ socket.on("joinedRoom", (roomResponse) => {
     room = roomResponse;
     console.log("Joined the Game");
     showMainPage();
+    setAlertBox(roomResponse.roomID);
+});
+
+socket.on("gameStarted", (randomUser) => {
+
 });
 
 socket.on("failedJoin", () => console.log("Room does not exist!"));
@@ -41,24 +48,13 @@ function createRoom() {
     socket.emit("createRoom", username);
 }
 
-
 function setUsername(value) {
     username = value;
 }
 
-function parseCookie() {
-    let pairs = document.cookie.split(";");
-
-    let obj = {};
-
-    for (let pair of pairs) {
-        let keyVal = pair.split("=");
-        obj[keyVal[0]] = keyVal[1];
-    }
-
-    return obj;
+function startGame() {
+    socket.emit("startGame", room.roomID);
 }
-
 
 
 

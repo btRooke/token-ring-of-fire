@@ -19,7 +19,6 @@ function sendMessage() {
         console.log({username: username, message: msg, gameID: room.roomID});
         socket.emit("usrMsg", {username: username, message: msg, gameID: room.roomID})
     }
-
 }
 
 function addOption(message, onclick) {
@@ -69,7 +68,6 @@ function addMessage(message) {
 }
 
 function addPlayer(name) {
-
     let playerBox = document.getElementById("players-box");
 
     let player = document.createElement("div");
@@ -86,9 +84,9 @@ function addPlayer(name) {
 }
 
 function setAlertBox(message) {
-
     let alertBoxElement = document.getElementById("alert-box");
     alertBoxElement.innerHTML = message;
+
 
 }
 

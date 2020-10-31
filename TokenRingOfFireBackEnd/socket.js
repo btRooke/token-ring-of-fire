@@ -120,13 +120,16 @@ function onChat(socket) {
 
 
 function pickCard(socket) {
-    socket.on("userPickCard", ({username, gameID, index}) => {
+    socket.on("userPickCard", ({username, gameID}) => {
         let cards = rooms.get(gameID).cards;
+
+        let index = Math.floor(Math.random() * cards.length);
 
         io.sockets.to(gameID).emit("userPickedCard", {username, card: cards[index]});
 
         // Remove the card from the cards list.
         rooms.get(gameID).cards.splice(index, 0);
+
     });
 }
 
