@@ -30,8 +30,7 @@ socket.on("joinedRoom", (roomResponse) => {
     console.log("Joined the Game");
     showMainPage();
     setAlertBox(roomResponse.roomID);
-    addOption("Start Game", () => pickCard());
-    addOption("End Turn", () => );
+    addOption("Start Game", () => pickCard());;
 });
 
 socket.on("gameStarted", (randomUser) => {
