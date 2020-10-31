@@ -1,18 +1,26 @@
-import app from "express";
+const express = require("express");
+
+
+const app = express();
+
+
 const http = require("http").Server(app);
 
 const io = require("socket.io")(http);
 
-users = new Map();
+app.use("/cards", express.static("public/cards"));
 
-io.on("connection", (socket) => {
-
-    socket.on("setUsername", function(data) {
-        if (users.get(data) !== undefined) {
-            socket.emit("userExists", `${data} username is taken!`);
-        } else {
-
-        }
-    });
-
+app.get("/", function(req, res) {
+    res.sendFile("test.html", {root: "./public"});
 });
+
+
+const PORT_NUM = 21906;
+
+
+http.listen(PORT_NUM, function() {
+    console.log(`listening on ${PORT_NUM}`);
+});
+
+
+exports.io = io;

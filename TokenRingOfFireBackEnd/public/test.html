@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="/socket.io/socket.io.js"></script>
+    </head>
+
+
+    <body>
+        <input type="text" id="username" placeholder="Enter your username"></input>
+        <input type="text" id="room" placeholder="Room ID">
+        <input type="text" id="message" placeholder="Enter A Message">
+        <input type="button" id="joinGame" onclick="joinGame()" value="Join Room">
+        <input type="button" onclick="createRoom()" value="Create Room">
+        <input type="button" onclick="sendMessage()" value="Send Message">
+
+        <script>
+            let socket = io();
+
+            let room = {};
+
+            let currentRoom = null;
+
+            let username = null;
+
+            let players = null;
+
+            socket.on("userConnect", (response) => {
+                room = response;
+                console.log(room);
+            });
+
+
+            socket.on("roomCreated", (roomResponse) => {
+                    console.log(roomResponse.roomID);
+
+                    room = roomResponse;
+            });
+
+            socket.on("usrMsg", (response) => {
+                const {userName, message} = response;
+                console.log(`${username}: ${message}`);
+            });
+
+            socket.on("failedJoin", () => console.log("Room does not exist!"));
+            socket.on("userAlreadyExists", () => console.log("The user already exists"));
+
+            function joinGame() {
+                username = document.getElementById("username").value;
+                let roomID = document.getElementById("room").value;
+
+                socket.emit("joinRequest", {username, roomID});
+            }
+
+            function createRoom() {
+                username = document.getElementById("username").value;
+
+                socket.emit("createRoom", username);
+
+            }
+
+            function sendMessage(event) {
+                let msg = document.getElementById("message").value;
+                document.getElementById("message").value = "";
+          
+                socket.emit("usrMsg", {username, message: msg, gameID: room.roomID})
+             
+            }
+            
+        </script>
+
+    </body>
+</html>
