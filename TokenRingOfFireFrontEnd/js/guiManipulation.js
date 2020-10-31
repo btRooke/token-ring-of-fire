@@ -18,7 +18,6 @@ function sendMessage() {
     if (msg != "") {
         socket.emit("usrMsg", {username, message: msg, gameID: room.roomID})
     }
-
 }
 
 function addOption(message, onclick) {
