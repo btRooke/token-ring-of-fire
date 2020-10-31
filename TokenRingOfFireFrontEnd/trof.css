@@ -9,6 +9,8 @@ body {
     font-family: 'Roboto', sans-serif;
 }
 
+
+
 /* Join start page */
 
 .join-create-container {
@@ -60,7 +62,7 @@ body {
     margin-bottom: 1em;
 }
 
-.chat-message {
+.message {
     font-style: italic;
 }
 
@@ -135,11 +137,20 @@ body {
 .subgrid-main {
     grid-column: 1 / 4;
     grid-row: 1 / 3;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .subgrid-messagebox {
     grid-row: 3;
     grid-column: 1 / 4;
+}
+
+
+.card {
+    height: 50%;
 }
 
 /* Grid stuff */
