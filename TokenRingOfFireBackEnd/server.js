@@ -8,10 +8,12 @@ const http = require("http").Server(app);
 
 const io = require("socket.io")(http);
 
-app.use("/cards", express.static("public/cards"));
+app.use("/cards/", express.static("../TokenRingOfFireFrontEnd/assets/card_images/"));
+
+app.use("/", express.static("../TokenRingOfFireFrontEnd/"));
 
 app.get("/", function(req, res) {
-    res.sendFile("test.html", {root: "./public"});
+    res.sendFile("index.html", {root: "../TokenRingOfFireFrontEnd/"});
 });
 
 

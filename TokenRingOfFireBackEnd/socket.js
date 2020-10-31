@@ -1,9 +1,12 @@
 const {io} = require("./server.js");
 const uuid = require("uuid");
+const {endTurn} = require("./gamelogic");
+const {pickCard} = require("./gamelogic");
+
+const {shuffleCards} = require("./cards");
 
 
 const rooms = new Map();
-
 
 /**
  * This class represents a single user.
@@ -26,7 +29,8 @@ class Room {
         this.id = id;
         this.users = new Map(); // Map<String, User>
         this.userTurn = null;
-        this.gameStarted = false; 
+        this.gameStarted = false;
+        this.cards = shuffleCards();
     }
 
     addUser = (user) => {
@@ -84,11 +88,11 @@ function startGame(socket) {
 
             let users = users.keys();
             
-            let randomUser = users[Math.floor(Math.random() * users.length)];
+            let randomUser = Math.floor(Math.random() * users.length);
 
-            room.userTurn = room.users.get(randomUser);
+            room.userTurn = randomUser;
 
-            io.to(roomID).emit("gameStarted", randomUser);
+            io.to(gameID).emit("gameStarted", randomUser);
         }
     });
 }
@@ -116,13 +120,7 @@ function onChat(socket) {
     });
 }
 
-
-function pickCard() {
-    
-}
-
-
-const events = [createRoom, joinRoom, startGame, onChat];
+const events = [createRoom, joinRoom, startGame, onChat, pickCard, endTurn];
 
 
 users = new Set();
@@ -132,5 +130,4 @@ io.on("connection", (socket) => {
     events.forEach(event => event(socket));
 });
 
-
-
+exports.rooms = rooms;
