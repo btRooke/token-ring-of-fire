@@ -25,18 +25,18 @@ class User {
 class Room {
     constructor(id) {
         this.id = id;
-        this.users = new Map(); // Map<String, User>
+        this.users = []; // Map<String, User>
         this.userTurn = null;
         this.gameStarted = false;
         this.cards = shuffleCards();
     }
 
     addUser = (user) => {
-        this.users.set(user.name, user);
+        this.users.push(user.name);
     }
 
     containsUser = (username) => {
-        return this.users.has(username);
+        return this.users.includes(username);
     }
 
 }
@@ -56,7 +56,7 @@ function createRoom(socket) {
 
 function joinRoom(socket) {
     socket.on("joinRequest", ({username, roomID}) => {
-        if (rooms.has(roomID)) {
+        if (rooms.has(roomID) && !room.get(roomID).gameStarted) {
             let room = rooms.get(roomID);
 
             if (room.containsUser(username)) {
@@ -84,13 +84,13 @@ function startGame(socket) {
             
             let room = rooms.get(gameID);
 
-            let users = users.keys();
-            
-            let randomUser = Math.floor(Math.random() * users.length);
+            let randomUser = Math.floor(Math.random() * room.users.length);
 
-            room.userTurn = users[randomUser];
+            room.gameStarted = true;
 
-            io.to(gameID).emit("gameStarted", randomUser);
+            room.userTurn = room.users[randomUser];
+
+            io.to(gameID).emit("gameStarted", room.userTurn);
         }
     });
 }
@@ -133,29 +133,21 @@ function pickCard(socket) {
                 io.sockets.to(gameID).emit("userPickedCard", {username, card: cards[index]});
 
                 // Remove the card from the cards list.
-                rooms.get(gameID).cards.splice(index, 0);
+                let room = rooms.get(gameID);
+
+                room.cards.splice(index, 0);
+
+                // Pick the next user.
+                let indexUser = room.users.indexOf(room.userTurn);
+                room.userTurn = room.users[++indexUser % room.users.length];
             }
         }
 
     });
 }
 
-function endTurn(socket) {
-    socket.on("endTurn", (gameID, user) => {
-        let room = this.rooms.get(gameID);
 
-        let users = room.users.keys();
-
-        let userIndex = ++room.userTurn % users.length;
-
-        room.userTurn = userIndex;
-
-        io.sockets.in(gameID).emit("userTurn", {user: users[userIndex]});
-    });
-}
-
-
-const events = [createRoom, joinRoom, startGame, onChat, pickCard, endTurn];
+const events = [createRoom, joinRoom, startGame, onChat, pickCard];
 
 
 users = new Set();

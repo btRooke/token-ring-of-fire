@@ -30,16 +30,19 @@ socket.on("joinedRoom", (roomResponse) => {
     console.log("Joined the Game");
     showMainPage();
     setAlertBox(roomResponse.roomID);
-    addOption("Start Game", () => pickCard());
-    addOption("End Turn", () => );
+    addOption("Start Game", "startGame()");
 });
 
 socket.on("gameStarted", (randomUser) => {
-    addOption("Pick Card", () => pickCard());
+    addOption("Pick Card", `pickCard()`);
 });
 
 socket.on("userPickedCard", ({username, card}) => {
-    showCard(card);
+    showCard(card.url);
+});
+
+socket.on("userTurn", ({user}) => {
+    toggleDisable("Pick Card", user === username);
 });
 
 socket.on("failedJoin", () => console.log("Room does not exist!"));
@@ -64,10 +67,6 @@ function startGame() {
 
 function pickCard() {
     socket.emit("userPickCard", {username, gameID: room.roomID});
-}
-
-function endTurn() {
-    socket.emit("endTurn", {gameID: room.roomID, user :username});
 }
 
 
