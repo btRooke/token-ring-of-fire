@@ -1,7 +1,6 @@
 
 const cardPath = "/cards";
 
-
 function showCard(card) {
 
     let mainElement = document.getElementById("main");
@@ -23,6 +22,29 @@ function addMessage(message) {
 
 function addButton(message, onclick) {
     let buttonBox = document.getElementById("options-box");
+}
+
+function addPlayer(name) {
+
+    let playerBox = document.getElementById("players-box");
+
+    let player = document.createElement("div");
+    player.setAttribute("class", "player-box");
+    player.setAttribute("id", name);
+
+    let playerName = document.createElement("div");
+    playerName.setAttribute("class", "player-name")
+    playerName.innerHTML = name;
+
+    player.appendChild(playerName);
+
+    playerBox.appendChild(player);
+}
+
+function setAlertBox(message) {
+
+    let alertBoxElement = document.getElementById("alert-box");
+    alertBoxElement.innerHTML = message;
 
 }
 
@@ -51,7 +73,7 @@ function showMainPage() {
 
 <div class="main-grid-element"> 
     <div id="main" class="subgrid-main"></div>
-    <div id="alert-box" class="subgrid-messagebox"></div>
+    <div id="alert-box" class="subgrid-messagebox alert-box"></div>
 </div>
 
 <div class="chat-grid-element">
