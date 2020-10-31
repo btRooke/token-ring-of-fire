@@ -116,6 +116,12 @@ function onChat(socket) {
     });
 }
 
+
+function pickCard() {
+    
+}
+
+
 const events = [createRoom, joinRoom, startGame, onChat];
 
 
