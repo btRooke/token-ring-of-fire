@@ -35,17 +35,16 @@ function addOption(message, onclick) {
 
 }
 
-function toggleDisable(message) {
+function toggleDisable(message, disabled) {
 
     let option = document.getElementById(message);
 
-    if (option.hasAttribute("disabled")) {
+    if (!disabled) {
         option.removeAttribute("disabled");
     }
     else {
         option.setAttribute("disabled", "false");
     }
-
 }
 
 function showCard(card) {
