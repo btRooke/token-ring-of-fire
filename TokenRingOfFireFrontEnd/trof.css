@@ -1,3 +1,147 @@
+/* General */
+
+body {
+    padding: 0;
+    margin: 0;
+}
+
+* {
+    font-family: 'Roboto', sans-serif;
+}
+
+.options-button {
+    display: block;
+    text-align: center;
+    margin: auto;
+    margin-bottom: 0.8em;
+    font-weight: bold;
+    border: black solid thin;
+    padding: 0.8em;
+    background: white;
+}
+
+.options-button:hover {
+    background: lightgrey;
+}
+
+.options-button:active {
+    background: grey;
+}
+
+/* Chat box */
+
+.chat-box {
+    margin: 0.8em;
+}
+
+.chat-box-messages {
+    border: thin black solid;
+    padding: 1em;
+    margin-bottom: 1em;
+}
+
+.chat-message {
+    font-style: italic;
+}
+
+.chat-input-container {
+    border: thin black solid;
+    padding: 0.5em;
+    display: grid;
+    grid-template-columns: 80fr 20fr;
+}
+
+.chat-text-input {
+    border: thin black solid;
+    padding: 0.3em;
+    margin-right: 0.5em;
+}
+
+.chat-send-button {
+    border: thin black solid;
+    padding: 0.3em;
+    background: white;
+    color: black;
+}
+
+.chat-send-button:hover {
+    background: lightgrey;
+}
+
+.chat-send-button:active {
+    background: grey;
+}
+
+/* Player boxes */
+
+.player-box {
+    border: black solid thin;
+    border-radius: 1em;
+    display: inline-block;
+    padding: 0.5em;
+    margin-right: 0.8em;
+    flex: 1 1 auto;
+}
+
+.player-name {
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.5em;
+}
+
+/* Grid element titles */
+
+.main-title {
+    font-family: 'Bungee Shade', cursive;
+    text-align: center;
+    font-size: 5.5em;
+    margin: 0.2em;
+}
+
+.grid-element-title {
+    font-family: 'Bungee Shade', cursive;
+    text-align: center;
+    font-size: 3.5em;
+    margin: 0.5em;
+    margin-bottom: 0.5em;
+}
+
+/* Grid stuff */
+
 .grid-container {
     display: grid;
+    grid-template-columns: 20fr 55fr 25fr; /* https://stackoverflow.com/a/46593138/10891319 */
+    grid-auto-rows: 15vh 65vh 20vh;
+}
+
+.grid-container > * {
+    border: 1px dashed black;
+}
+
+.title-grid-element {
+    grid-column: 1 / 4;
+    display: grid;
+    align-content: center;
+}
+
+.options-grid-element {
+    grid-row: 2;
+}
+
+.main-grid-element {
+    grid-column: 2;
+    grid-row: 2;
+}
+
+.chat-grid-element {
+    grid-column: 3;
+    grid-row: 2;
+}
+
+.players-grid-element {
+    grid-column: 1 / 4;
+    grid-row: 3;
+
+    padding: 0.8em;
+    display: flex;
 }
