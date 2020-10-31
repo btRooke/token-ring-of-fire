@@ -1,5 +1,10 @@
 /* General */
 
+body {
+    padding: 0;
+    margin: 0;
+}
+
 * {
     font-family: 'Roboto', sans-serif;
 }
@@ -12,7 +17,7 @@
     font-weight: bold;
     border: black solid thin;
     padding: 0.8em;
-    border-radius: 1em;;
+    background: white;
 }
 
 .options-button:hover {
@@ -31,7 +36,6 @@
 
 .chat-box-messages {
     border: thin black solid;
-    border-radius: 1em;
     padding: 1em;
     margin-bottom: 1em;
 }
@@ -40,10 +44,32 @@
     font-style: italic;
 }
 
+.chat-input-container {
+    border: thin black solid;
+    padding: 0.5em;
+    display: grid;
+    grid-template-columns: 80fr 20fr;
+}
+
 .chat-text-input {
-    border: thin black dashed;
-    border-radius: 1em;
-    padding: 1em;
+    border: thin black solid;
+    padding: 0.3em;
+    margin-right: 0.5em;
+}
+
+.chat-send-button {
+    border: thin black solid;
+    padding: 0.3em;
+    background: white;
+    color: black;
+}
+
+.chat-send-button:hover {
+    background: lightgrey;
+}
+
+.chat-send-button:active {
+    background: grey;
 }
 
 /* Player boxes */
@@ -51,15 +77,16 @@
 .player-box {
     border: black solid thin;
     border-radius: 1em;
-    height: 5em;
-    width: 5em;
     display: inline-block;
     padding: 0.5em;
     margin-right: 0.8em;
+    flex: 1 1 auto;
 }
 
 .player-name {
     text-align: center;
+    font-weight: bold;
+    font-size: 1.5em;
 }
 
 /* Grid element titles */
@@ -67,15 +94,15 @@
 .main-title {
     font-family: 'Bungee Shade', cursive;
     text-align: center;
-    font-size: 4em;
+    font-size: 5.5em;
     margin: 0.2em;
 }
 
 .grid-element-title {
     font-family: 'Bungee Shade', cursive;
     text-align: center;
-    font-size: 2.5em;
-    margin: 0.2em;
+    font-size: 3.5em;
+    margin: 0.5em;
     margin-bottom: 0.5em;
 }
 
@@ -84,7 +111,7 @@
 .grid-container {
     display: grid;
     grid-template-columns: 20fr 55fr 25fr; /* https://stackoverflow.com/a/46593138/10891319 */
-    grid-gap: 0.8em;
+    grid-auto-rows: 15vh 65vh 20vh;
 }
 
 .grid-container > * {
@@ -93,6 +120,8 @@
 
 .title-grid-element {
     grid-column: 1 / 4;
+    display: grid;
+    align-content: center;
 }
 
 .options-grid-element {
@@ -114,4 +143,5 @@
     grid-row: 3;
 
     padding: 0.8em;
+    display: flex;
 }
