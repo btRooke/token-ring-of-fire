@@ -14,7 +14,7 @@ socket.on("roomCreated", (roomResponse) => {
     room = roomResponse;
     showMainPage();
     setAlertBox(roomResponse.roomID);
-    addOption("Start Game",);
+    addOption("Start Game", `startGame()`);
 });
 
 socket.on("usrMsg", (response) => {

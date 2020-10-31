@@ -56,7 +56,7 @@ function createRoom(socket) {
 
 function joinRoom(socket) {
     socket.on("joinRequest", ({username, roomID}) => {
-        if (rooms.has(roomID) && !room.get(roomID).gameStarted) {
+        if (rooms.has(roomID) && !rooms.get(roomID).gameStarted) {
             let room = rooms.get(roomID);
 
             if (room.containsUser(username)) {
