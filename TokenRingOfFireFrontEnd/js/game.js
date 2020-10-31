@@ -1,10 +1,8 @@
+let room = {};
 
 const socket = io();
 
-let room = {};
-
-let username = null;
-
+var username = null;
 
 socket.on("userConnect", (response) => {
     room = response;
@@ -34,12 +32,10 @@ socket.on("userAlreadyExists", () => console.log("The user already exists"));
 
 function joinGame() {
     let roomID = document.getElementById("room").value;
-
-    socket.emit("joinRequest", {user: username, roomID});
+    socket.emit("joinRequest", {username, roomID});
 }
 
 function createRoom() {
-    username = document.getElementById("username").value;
     socket.emit("createRoom", username);
 }
 
@@ -48,6 +44,10 @@ function sendMessage() {
     document.getElementById("message").value = "";
 
     socket.emit("usrMsg", {username, message: msg, gameID: room.roomID})
+}
+
+function setUsername(value) {
+    username = value;
 }
 
 function parseCookie() {

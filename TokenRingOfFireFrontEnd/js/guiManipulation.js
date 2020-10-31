@@ -51,19 +51,16 @@ function setAlertBox(message) {
 // ========================== DYNAMIC PAGE GENERATION STUFF BELOW HERE ============================================
 
 function showStartPage() {
-
     showClearTitlePage();
     let mainGrid = document.getElementById("highest-grid");
-    mainGrid.innerHTML += `<div class="join-create-container"><input type="text" id="username" placeholder="Username"><button onclick="showEnterGameCodeScreen()"> Join Game </button><button onclick="createRoom()"> Create Game </button></div>;`
-
+    mainGrid.innerHTML += `<div class="join-create-container"><input type="text" id="username" onchange="setUsername(this.value)" placeholder="Username"><button onclick="showEnterGameCodeScreen()"> Join Game </button><button onclick="createRoom()"> Create Game </button></div>;`
 }
 
 function showEnterGameCodeScreen() {
-    username = document.getElementById("username").value;
 
     showClearTitlePage();
     let mainGrid = document.getElementById("highest-grid");
-    mainGrid.innerHTML += `<div class="join-create-container"><input type="text" id="room" onclick="joinGame()" placeholder="Enter Game Code"><button> Submit</button></div>`
+    mainGrid.innerHTML += `<div class="join-create-container"><input type="text" id="room" placeholder="Enter Game Code"><button onclick="joinGame()"> Submit</button></div>`
 }
 
 function showMainPage() {
