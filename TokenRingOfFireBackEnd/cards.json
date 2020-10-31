@@ -1,0 +1,69 @@
+{
+    "cards": [
+        {
+            "name": "Two Of Clubs",
+            "url": "2_of_clubs.png",
+            "meaning": "Drink" 
+        },
+        {
+            "name": "Three Of Clubs",
+            "url": "3_of_clubs.png",
+            "meaning": "Drink" 
+        },
+        {
+            "name": "Four Of Clubs",
+            "url": "4_of_clubs.png",
+            "meaning": "Drink" 
+        },
+        {
+            "name": "Five Of Clubs",
+            "url": "5_of_clubs.png",
+            "meaning": "Drink" 
+        },
+        {
+            "name": "Six Of Clubs",
+            "url": "6_of_clubs.png",
+            "meaning": "Drink" 
+        },
+        {
+            "name": "Seven Of Clubs",
+            "url": "7_of_clubs.png",
+            "meaning": "Drink" 
+        },
+        {
+            "name": "Eight Of Clubs",
+            "url": "8_of_clubs.png",
+            "meaning": "Drink" 
+        },
+        {
+            "name": "Nine Of Clubs",
+            "url": "9_of_clubs.png",
+            "meaning": "Drink" 
+        },
+        {
+            "name": "Ten Of Clubs",
+            "url": "10_of_clubs.png",
+            "meaning": "Drink" 
+        },
+        {
+            "name": "Jack Of Clubs",
+            "url": "jack_of_clubs.png",
+            "meaning": "Drink" 
+        },
+        {
+            "name": "King Of Clubs",
+            "url": "king_of_clubs.png",
+            "meaning": "Drink" 
+        },
+        {
+            "name": "Queen Of Clubs",
+            "url": "queen_of_clubs.png",
+            "meaning": "Drink" 
+        },
+        {
+            "name": "Ace Of Clubs",
+            "url": "ace_of_clubs.png",
+            "meaning": "Drink" 
+        }
+    ]
+}
