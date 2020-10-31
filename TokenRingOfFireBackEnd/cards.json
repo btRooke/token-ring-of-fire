@@ -3,67 +3,67 @@
         {
             "name": "Two Of Clubs",
             "url": "2_of_clubs.png",
-            "meaning": "Drink" 
+            "meaning": "Two is you!" 
         },
         {
             "name": "Three Of Clubs",
             "url": "3_of_clubs.png",
-            "meaning": "Drink" 
+            "meaning": "Three is me!" 
         },
         {
             "name": "Four Of Clubs",
             "url": "4_of_clubs.png",
-            "meaning": "Drink" 
+            "meaning": "Four is females!" 
         },
         {
             "name": "Five Of Clubs",
             "url": "5_of_clubs.png",
-            "meaning": "Drink" 
+            "meaning": "Five is thumbmaster! Not quite implemented yet..." 
         },
         {
             "name": "Six Of Clubs",
             "url": "6_of_clubs.png",
-            "meaning": "Drink" 
+            "meaning": "Six is someone who is male!" 
         },
         {
             "name": "Seven Of Clubs",
             "url": "7_of_clubs.png",
-            "meaning": "Drink" 
+            "meaning": "Seven is heaven, not quite implemented..." 
         },
         {
             "name": "Eight Of Clubs",
             "url": "8_of_clubs.png",
-            "meaning": "Drink" 
+            "meaning": "Eight is mate, choose a partner!" 
         },
         {
             "name": "Nine Of Clubs",
             "url": "9_of_clubs.png",
-            "meaning": "Drink" 
+            "meaning": "Nine is rhyme - do a rhyme in player order!" 
         },
         {
             "name": "Ten Of Clubs",
             "url": "10_of_clubs.png",
-            "meaning": "Drink" 
+            "meaning": "10 is categories - do categories in player order!" 
         },
         {
             "name": "Jack Of Clubs",
             "url": "jack_of_clubs.png",
-            "meaning": "Drink" 
+            "meaning": "New rule! Think of a new rule!" 
         },
         {
             "name": "King Of Clubs",
             "url": "king_of_clubs.png",
-            "meaning": "Drink" 
+            "meaning": "Add drink to the king's cup!" 
         },
         {
             "name": "Queen Of Clubs",
             "url": "queen_of_clubs.png",
-            "meaning": "Drink" 
+            "meaning": "Questionmaster - if someone answers your question, you drink!" 
         },
         {
             "name": "Ace Of Clubs",
             "url": "ace_of_clubs.png",
-            "meaning": "Drink" 
+            "meaning": "Waterfall!" 
         }
     ]
 }
