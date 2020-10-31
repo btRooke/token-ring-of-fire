@@ -1,3 +1,117 @@
+/* General */
+
+* {
+    font-family: 'Roboto', sans-serif;
+}
+
+.options-button {
+    display: block;
+    text-align: center;
+    margin: auto;
+    margin-bottom: 0.8em;
+    font-weight: bold;
+    border: black solid thin;
+    padding: 0.8em;
+    border-radius: 1em;;
+}
+
+.options-button:hover {
+    background: lightgrey;
+}
+
+.options-button:active {
+    background: grey;
+}
+
+/* Chat box */
+
+.chat-box {
+    margin: 0.8em;
+}
+
+.chat-box-messages {
+    border: thin black solid;
+    border-radius: 1em;
+    padding: 1em;
+    margin-bottom: 1em;
+}
+
+.chat-message {
+    font-style: italic;
+}
+
+.chat-text-input {
+    border: thin black dashed;
+    border-radius: 1em;
+    padding: 1em;
+}
+
+/* Player boxes */
+
+.player-box {
+    border: black solid thin;
+    border-radius: 1em;
+    height: 5em;
+    width: 5em;
+    display: inline-block;
+    padding: 0.5em;
+    margin-right: 0.8em;
+}
+
+.player-name {
+    text-align: center;
+}
+
+/* Grid element titles */
+
+.main-title {
+    font-family: 'Bungee Shade', cursive;
+    text-align: center;
+    font-size: 4em;
+    margin: 0.2em;
+}
+
+.grid-element-title {
+    font-family: 'Bungee Shade', cursive;
+    text-align: center;
+    font-size: 2.5em;
+    margin: 0.2em;
+    margin-bottom: 0.5em;
+}
+
+/* Grid stuff */
+
 .grid-container {
     display: grid;
+    grid-template-columns: 20fr 55fr 25fr; /* https://stackoverflow.com/a/46593138/10891319 */
+    grid-gap: 0.8em;
+}
+
+.grid-container > * {
+    border: 1px dashed black;
+}
+
+.title-grid-element {
+    grid-column: 1 / 4;
+}
+
+.options-grid-element {
+    grid-row: 2;
+}
+
+.main-grid-element {
+    grid-column: 2;
+    grid-row: 2;
+}
+
+.chat-grid-element {
+    grid-column: 3;
+    grid-row: 2;
+}
+
+.players-grid-element {
+    grid-column: 1 / 4;
+    grid-row: 3;
+
+    padding: 0.8em;
 }
