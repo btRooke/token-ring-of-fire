@@ -50,20 +50,6 @@ function setUsername(value) {
     username = value;
 }
 
-function parseCookie() {
-    let pairs = document.cookie.split(";");
-
-    let obj = {};
-
-    for (let pair of pairs) {
-        let keyVal = pair.split("=");
-        obj[keyVal[0]] = keyVal[1];
-    }
-
-    return obj;
-}
-
-
 
 
 
