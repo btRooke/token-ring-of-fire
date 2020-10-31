@@ -1,9 +1,8 @@
+let room = {};
 
 const socket = io();
 
-let room = {};
-
-let username = null;
+var username = null;
 
 socket.on("userConnect", (response) => {
     room = response;
@@ -13,6 +12,7 @@ socket.on("userConnect", (response) => {
 socket.on("roomCreated", (roomResponse) => {
     console.log(roomResponse.roomID);
     room = roomResponse;
+    showMainPage();
 });
 
 socket.on("usrMsg", (response) => {
@@ -21,21 +21,42 @@ socket.on("usrMsg", (response) => {
     addMessage(`${userName}: ${msg}`);
 });
 
+socket.on("joinedRoom", (roomResponse) => {
+    showEnterGameCodeScreen();
+    room = roomResponse;
+    console.log("Joined the Game");
+    showMainPage();
+});
+
 socket.on("failedJoin", () => console.log("Room does not exist!"));
 socket.on("userAlreadyExists", () => console.log("The user already exists"));
 
 function joinGame() {
-    username = document.getElementById("username").value;
     let roomID = document.getElementById("room").value;
-
     socket.emit("joinRequest", {username, roomID});
 }
 
 function createRoom() {
-    username = document.getElementById("username").value;
     socket.emit("createRoom", username);
 }
 
+
+function setUsername(value) {
+    username = value;
+}
+
+function parseCookie() {
+    let pairs = document.cookie.split(";");
+
+    let obj = {};
+
+    for (let pair of pairs) {
+        let keyVal = pair.split("=");
+        obj[keyVal[0]] = keyVal[1];
+    }
+
+    return obj;
+}
 
 
 
