@@ -105,6 +105,10 @@ function showEnterGameCodeScreen() {
     mainGrid.innerHTML += `<div class="join-create-container"><input type="text" id="room" placeholder="Enter Game Code"><button onclick="joinGame()"> Submit</button></div>`
 }
 
+function setTitle() {
+    document.title = `TRoF - ${room.roomID}`;
+}
+
 function showMainPage() {
     showClearTitlePage();
     let mainGrid = document.getElementById("highest-grid");
